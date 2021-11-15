@@ -1,5 +1,5 @@
 const app = require("express").Router();
-const Workout = require("../../models")
+const Workout = require("../models")
 
 app.post("/submit", ({ body }, res) => {
   db.Book.create(body)
