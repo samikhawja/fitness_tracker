@@ -13,7 +13,7 @@ app.get("/api/workouts", (req, res) => {
 });
 
 app.put("/api/workouts/:id", ({ body, params }, res) => {
-  Workout.findOneAndUpdate(params.id, {$push: { exercise: body } })
+  Workout.findByIdAndUpdate(params.id, {$push: { "exercises": body } })
     .then(dbWorkout => {
       res.json(dbWorkout);
     })
@@ -35,16 +35,6 @@ app.post("/api/workouts", ({ body }, res) => {
 app.get("/api/workouts/range", (req, res) => {
   Workout.find({})
     .sort({ date: -1 })
-    .then(dbWorkout => {
-      res.json(dbWorkout);
-    })
-    .catch(err => {
-      res.status(400).json(err);
-    });
-});
-
-app.delete("/api/workouts/:id", (req, res) => {
-  Workout.findByIdAndDelete({})
     .then(dbWorkout => {
       res.json(dbWorkout);
     })
