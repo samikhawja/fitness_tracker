@@ -6,11 +6,6 @@ mongoose.connect("mongodb://localhost/populate", {
   useFindAndModify: false
 });
 
-// mongoose.connect("mongodb+srv://dbUser:11dgtWEpFYp4O3W2@cluster0.oqq7r.mongodb.net/populate", {
-//   useNewUrlParser: true,
-//   useFindAndModify: false
-// });
-
 let workoutSeed = [
   {
     day: new Date(new Date().setDate(new Date().getDate() - 10)),
