@@ -1,7 +1,10 @@
 const app = require("express").Router();
 const Workout = require("../models/Workout")
 
-app.get("/api/workouts", async (req, res) => {
+app.get("/api/workouts", async ({ body }, res) => {
+  const workout = new Workout(body);
+  workout.td();
+  
   try{
     const newWorkout = await Workout.find({})
     .sort({ date: -1 })
@@ -29,7 +32,10 @@ app.post("/api/workouts", async ({ body }, res) => {
   }
 });
 
-app.get("/api/workouts/range", async (req, res) => {
+app.get("/api/workouts/range", async ({ body }, res) => {
+  const workout = new Workout(body);
+  workout.td();
+  
   try{
     const newWorkout = await Workout.find({})
     .sort({ date: -1 })
